@@ -29,13 +29,12 @@ const TopBar = () => (
     <div className={`${PRIMARY_GREEN} text-white font-medium text-xs md:text-[13px] py-3 overflow-x-auto`}>
 
         {/* Main Flex Container: justify-between pushes left content to left and right content to right */}
-        <div className="container mx-auto px-4 flex md:flex-row justify-between items-center w-full">
+        <div className="container mx-auto px-4 md:flex md:flex-row justify-between items-center w-full">
 
             {/* LEFT SIDE: Contact Text Fields (with dots) - Aligned to left */}
             <div className="mx-8 flex flex-wrap justify-center md:justify-start items-center whitespace-nowrap gap-1 mb-2 md:mb-0">
                 {/* 1. Starting Orange Dot */}
-                <span className={`${ACCENT_YELLOW} w-1.5 h-1.5 rounded-full inline-block mr-2`} />
-
+                <span className={`${ACCENT_YELLOW} w-1.5 h-1.5 rounded-full inline-block mr-2`} />x
                 {/* 2. Text 1, Dot, Text 2, Dot, Text 3 */}
                 <span>7631 Sabina Park, 115 Devon Isle, USA</span>
                 <RoundedBullet />
@@ -45,12 +44,13 @@ const TopBar = () => (
             </div>
 
             {/* RIGHT SIDE: Social Icons - Aligned to right */}
-            <div className="mx-5 flex flex-row items-center gap-4">
+            <div className="mx-5 flex flex-row items-center gap-4 justify-center md:justify-start">
                 <Facebook size={16} className="cursor-pointer hover:text-gray-200 transition-colors" />
                 <XLogo size={14} className="cursor-pointer hover:text-gray-200 transition-colors" />
                 <Instagram size={16} className="cursor-pointer hover:text-gray-200 transition-colors" />
                 <BehanceLogo size={18} className="cursor-pointer hover:text-gray-200 transition-colors" />
             </div>
+
 
         </div>
     </div>

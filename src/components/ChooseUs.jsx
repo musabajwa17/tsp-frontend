@@ -13,7 +13,7 @@ const IMAGES = {
 // --- Main Section Component ---
 
 const WhyChooseSection = () => (
-    <section className="py-24 bg-white font-sans">
+    <section className="py-24 bg-[#ffffff] font-sans">
         <div className="container mx-auto px-4 max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
 
             {/* Left Content (Skills and Text) - Order 2 on mobile, 1 on desktop */}

@@ -10,7 +10,7 @@ const VideoSection = () => (
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-15 max-w-3xl mx-auto leading-tight">
                 Relax And Enjoy With Our <br /> Hotel & Resort
             </h2>
-            <div className="w-full my-40 flex items-center justify-center">
+            <div className="w-full my-5 sm:my-15 md:my-20 lg:my-40 flex items-center justify-center">
                 <button className="bg-white text-black w-20 h-20 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
                     <Play size={24} fill="currentColor" />
                 </button>

@@ -1,66 +1,96 @@
-// import SectionTitle from "./ui/SectionTitle";
-// import TeamCard from "./ui/TeamCard";
 
-// const IMAGES = {
-//     team1: "https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=400&auto=format&fit=crop", // Chef
-//     team2: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop", // Suit guy
-//     team3: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop", // Staff woman
-//     team4: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop", // Suit guy 2
-// };
-// const TeamSection = () => (
-//     <section className="py-24 bg-[#f9f9f9]">
-//         <div className="container mx-auto px-4 text-center">
-//             <SectionTitle tag="Fixyland Staff" title="Expert Staff Persons" align="center" />
+import SectionTitle from './ui/SectionTitle';
 
-//             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-//                 <TeamCard image={IMAGES.team1} name="Michael Dean" role="Chef Master" />
-//                 <TeamCard image={IMAGES.team2} name="Arnold Taylor" role="Room Cleane" />
-//                 <TeamCard image={IMAGES.team3} name="Michael Dean" role="Assistant Chef" />
-//                 <TeamCard image={IMAGES.team4} name="Michael Dean" role="Supervisor" />
-//             </div>
-//         </div>
-//     </section>
-// );
+const TeamSection = () => {
+    const teamMembers = [
+        {
+            id: 1,
+            name: "Michael Dean",
+            role: "Chef Master",
+            image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=400&auto=format&fit=crop"
+        },
+        {
+            id: 2,
+            name: "Arnold Taylor",
+            role: "Room Cleane",
+            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop"
+        },
+        {
+            id: 3,
+            name: "Michael Dean",
+            role: "Assistant Chef",
+            image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop"
+        },
+        {
+            id: 4,
+            name: "Michael Dean",
+            role: "Supervisor",
+            image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop"
+        }
+    ];
 
-// export default TeamSection;
+    return (
+        <section className="py-20 bg-[#fefefe]">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+                {/* Section Header */}
+                <div className="text-center mb-16">
+                    <p className="text-teal-600 font-medium tracking-wider text-sm uppercase mb-3">
+                        <SectionTitle tag="FIXYLAND STAFF" title="Expert Staff Persons" align="center" />
+                    </p>
+                    {/* <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
+                        Expert Staff Persons
+                    </h2> */}
+                </div>
 
+                {/* Team Grid */}
+                <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 xl:gap-8">
+                    {teamMembers.map((member) => (
+                        <div
+                            key={member.id}
+                            className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+                        >
+                            {/* Image Container */}
+                            <div className="relative h-80 overflow-hidden">
+                                <img
+                                    src={member.image}
+                                    alt={member.name}
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
 
-import SectionTitle from "./ui/SectionTitle";
-import TeamCard from "./ui/TeamCard";
+                                {/* Plus Button */}
+                                <button className="absolute bottom-4 right-4 w-12 h-12 bg-teal-600 hover:bg-teal-700 text-white rounded-lg flex items-center justify-center transition-colors duration-300 shadow-lg">
+                                    <svg
+                                        className="w-6 h-6"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M12 4v16m8-8H4"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
 
-// NOTE: These image URLs are selected to better match the *content* of the Staff.png file
-// 1. Man in apron holding food (Chef Master)
-// 2. Young man in bow tie/white shirt (Room Cleaner) - image is grayscale in the example
-// 3. Woman in glasses/apron behind counter (Assistant Chef)
-// 4. Young man in light suit (Supervisor)
-const IMAGES = {
-    team1: "https://images.unsplash.com/photo-1579753051280-60b5e7d4469e?q=80&w=400&auto=format&fit=crop",
-    team2: "https://images.unsplash.com/photo-1603513251433-28929e74c86b?q=80&w=400&auto=format&fit=crop",
-    team3: "https://images.unsplash.com/photo-1517248135465-4d2a912b7027?q=80&w=400&auto=format&fit=crop",
-    team4: "https://images.unsplash.com/photo-1610486676118-2830f6b4d455?q=80&w=400&auto=format&fit=crop",
-};
-const TeamSection = () => (
-    <section className="py-24 bg-[#f9f9f9]">
-        <div className="container mx-auto px-4 text-center">
-            {/* The SectionTitle component likely renders the "FIXYLAND STAFF" tag and "Expert Staff Persons" title */}
-            <SectionTitle tag="FIXYLAND STAFF" title="Expert Staff Persons" align="center" />
-
-            {/* The grid layout ensures responsiveness: 2 columns on medium screens, 4 on large screens */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-                {/* Card 1: Chef Master */}
-                <TeamCard image={IMAGES.team1} name="Michael Dean" role="Chef Master" />
-
-                {/* Card 2: Room Cleane - Note the original image has a grayscale effect */}
-                <TeamCard image={IMAGES.team2} name="Arnold Taylor" role="Room Cleane" />
-
-                {/* Card 3: Assistant Chef */}
-                <TeamCard image={IMAGES.team3} name="Michael Dean" role="Assistant Chef" />
-
-                {/* Card 4: Supervisor */}
-                <TeamCard image={IMAGES.team4} name="Michael Dean" role="Supervisor" />
+                            {/* Card Content */}
+                            <div className="p-6">
+                                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                                    {member.name}
+                                </h3>
+                                <div className="flex items-center">
+                                    <div className="w-8 h-0.5 bg-teal-600 mr-3"></div>
+                                    <p className="text-gray-500 text-sm">{member.role}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
-    </section>
-);
+        </section>
+    );
+};
 
 export default TeamSection;

@@ -68,10 +68,10 @@ const AboutSection = () => {
                     <div className="relative lg:pt-0">
                         <div className="relative h-[550px]">
                             {/* Left Image - Smaller, offset down */}
-                            <div className="absolute left-15 top-65 w-[45%] z-10">
+                            <div className="absolute left-16 top-48 sm:top-64 w-[45%] z-10">
                                 <img
                                     src="https://images.pexels.com/photos/2554517/pexels-photo-2554517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                    className="w-full h-[320px] object-cover rounded-3xl shadow-lg"
+                                    className="w-full h-[250px] sm:h-[320px] object-cover rounded-3xl shadow-lg"
                                     alt="Luxury Hotel Fireplace"
                                 />
                             </div>
@@ -80,13 +80,13 @@ const AboutSection = () => {
                             <div className="absolute right-0 top-0 w-[55%] z-0">
                                 <img
                                     src="https://images.pexels.com/photos/2236946/pexels-photo-2236946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                    className="w-full h-[480px] object-cover rounded-3xl shadow-lg"
+                                    className="w-full h-[350px] sm:h-[480px] object-cover rounded-3xl shadow-lg"
                                     alt="Luxury Hotel Pool"
                                 />
                             </div>
 
                             {/* Floating Restaurant Card - Centered between both images */}
-                            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-[#1a1a1a] text-white p-6 rounded-2xl shadow-2xl w-[200px] text-center z-20">
+                            <div className="absolute bottom-10 sm:bottom-0 left-1/2 transform -translate-x-1/2 bg-[#1a1a1a] text-white p-6 rounded-2xl shadow-2xl w-[200px] text-center z-20">
                                 <div className="mb-3 flex justify-center">
                                     <Utensils size={40} strokeWidth={1.5} />
                                 </div>
