@@ -1,28 +1,33 @@
-import SectionTitle from "./ui/SectionTitle";
-import ProgressBar from "./ui/ProgressBar";
+import React from 'react';
+import SectionTitle from './ui/SectionTitle';
+import ProgressBar from './ui/ProgressBar';
+// --- Image Data ---
 const IMAGES = {
-    hero: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop",
-    about1: "https://images.unsplash.com/photo-1512918580421-32c29925e123?q=80&w=800&auto=format&fit=crop", // Fireplace/Indoor
-    about2: "https://images.unsplash.com/photo-1572331165267-854da2dc72af?q=80&w=800&auto=format&fit=crop", // Pool/Outdoor
-    whyChoose: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1000&auto=format&fit=crop", // Resort view
-    whyChooseSmall: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=400&auto=format&fit=crop", // Patio
-    team1: "https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=400&auto=format&fit=crop", // Chef
-    team2: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop", // Suit guy
-    team3: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop", // Staff woman
-    team4: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop", // Suit guy 2
+    // Large main image (Resort view)
+    whyChoose: "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1000&auto=format&fit=crop",
+    // Small overlay image (Patio/Bar area)
+    whyChooseSmall: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=400&auto=format&fit=crop",
 };
-const WhyChooseSection = () => (
-    <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-16">
 
-            {/* Left Content */}
-            <div className="order-2 lg:order-1">
+
+// --- Main Section Component ---
+
+const WhyChooseSection = () => (
+    <section className="py-24 bg-white font-sans">
+        <div className="container mx-auto px-4 max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left Content (Skills and Text) - Order 2 on mobile, 1 on desktop */}
+            <div className="order-1 lg:order-1">
+                {/* Section Title component */}
                 <SectionTitle tag="Our Skills" title="Why Choose for us?" />
-                <p className="text-gray-500 mb-10">
+
+                {/* Description text */}
+                <p className="text-gray-500 mb-10 leading-relaxed max-w-lg">
                     There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even.
                 </p>
 
-                <div className="space-y-2">
+                {/* Progress Bars */}
+                <div className="space-y-2 mr-20">
                     <ProgressBar label="Services" percentage={95} />
                     <ProgressBar label="Chef Master" percentage={85} />
                     <ProgressBar label="Design" percentage={92} />
@@ -30,17 +35,38 @@ const WhyChooseSection = () => (
                 </div>
             </div>
 
-            {/* Right Image Grid */}
-            <div className="order-1 lg:order-2 relative">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                    <img src={IMAGES.whyChoose} alt="Resort View" className="w-full h-[500px] object-cover" />
+            {/* Right Image Grid - Order 1 on mobile, 2 on desktop */}
+            {/* Added 'overflow-visible' to the parent container to help prevent clipping of absolutely positioned children */}
+            <div className="order-2 lg:order-2 relative h-[500px] lg:h-[550px] flex items-center justify-center overflow-visible">
 
-                    {/* Decorative dots background element simulation */}
-                    <div className="absolute -top-10 -left-10 w-40 h-40 bg-[url('https://www.transparenttextures.com/patterns/dot-pattern.png')] opacity-20 -z-10"></div>
+                {/* Dot background element simulation */}
+                {/* Repositioned using translate to prevent top/right clipping from negative coordinates */}
+                <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-500/10 rounded-full hidden lg:block -z-10 transform translate-x-1/4 -translate-y-1/4" />
+
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-full">
+                    {/* Main Image */}
+                    <img
+                        src={IMAGES.whyChoose}
+                        alt="Resort View"
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02] rounded-3xl"
+                        loading="lazy"
+                        // Fallback in case image fails to load
+                        onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/1000x500/047857/ffffff?text=Resort+View" }}
+                    />
                 </div>
 
-                <div className="absolute bottom-10 -left-10 w-48 h-48 border-4 border-white rounded-2xl overflow-hidden shadow-xl hidden md:block">
-                    <img src={IMAGES.whyChooseSmall} alt="Detail" className="w-full h-full object-cover" />
+                {/* Small Detail Image Overlay */}
+                {/* FIXED: Removed 'hidden sm:block' to ensure visibility on small screens. */}
+                {/* FIXED: Adjusted mobile positioning to 'left-4' to prevent left-side clipping. */}
+                <div className="absolute bottom-6 left-4 md:bottom-10 md:-left-12 w-40 h-40 sm:w-48 sm:h-48 border-4 border-white rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-300 z-10">
+                    <img
+                        src={IMAGES.whyChooseSmall}
+                        alt="Detail"
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        // Fallback in case image fails to load
+                        onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/400x400/047857/ffffff?text=Detail" }}
+                    />
                 </div>
             </div>
 
@@ -48,5 +74,4 @@ const WhyChooseSection = () => (
     </section>
 );
 
-
-export default WhyChooseSection;
+export default WhyChooseSection;    
