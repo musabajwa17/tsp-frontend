@@ -34,13 +34,7 @@ const WhyChooseSection = () => (
                     <ProgressBar label="It Solution" percentage={98} />
                 </div>
             </div>
-
-            {/* Right Image Grid - Order 1 on mobile, 2 on desktop */}
-            {/* Added 'overflow-visible' to the parent container to help prevent clipping of absolutely positioned children */}
             <div className="order-2 lg:order-2 relative h-[500px] lg:h-[550px] flex items-center justify-center overflow-visible">
-
-                {/* Dot background element simulation */}
-                {/* Repositioned using translate to prevent top/right clipping from negative coordinates */}
                 <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-500/10 rounded-full hidden lg:block -z-10 transform translate-x-1/4 -translate-y-1/4" />
 
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl w-full h-full">
@@ -54,10 +48,6 @@ const WhyChooseSection = () => (
                         onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/1000x500/047857/ffffff?text=Resort+View" }}
                     />
                 </div>
-
-                {/* Small Detail Image Overlay */}
-                {/* FIXED: Removed 'hidden sm:block' to ensure visibility on small screens. */}
-                {/* FIXED: Adjusted mobile positioning to 'left-4' to prevent left-side clipping. */}
                 <div className="absolute bottom-6 left-4 md:bottom-10 md:-left-12 w-40 h-40 sm:w-48 sm:h-48 border-4 border-white rounded-2xl overflow-hidden shadow-xl transform hover:scale-105 transition-transform duration-300 z-10">
                     <img
                         src={IMAGES.whyChooseSmall}

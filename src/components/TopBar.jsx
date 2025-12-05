@@ -24,7 +24,7 @@ const RoundedBullet = () => (
     <span className={`${ACCENT_YELLOW} w-1.5 h-1.5 rounded-full inline-block mx-2`} />
 );
 
-const TopBar = () => (
+const TopBar = React.memo(() => (
     // Ensures single-line row and allows horizontal scroll on small screens
     <div className={`${PRIMARY_GREEN} text-white font-medium text-xs md:text-[13px] py-3 overflow-x-auto`}>
 
@@ -54,6 +54,6 @@ const TopBar = () => (
 
         </div>
     </div>
-);
+));
 
 export default TopBar;

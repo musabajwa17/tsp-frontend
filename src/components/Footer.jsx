@@ -17,7 +17,7 @@ const BG_PATTERN_URL = 'https://placehold.co/100x100/111/111?text=.' // Placehol
  * * MODIFICATION: Added 'text-center' and 'items-center' to specific elements 
  * in the mobile view (default, before the md breakpoint) to ensure centering.
  */
-const Footer = () => (
+const Footer = React.memo(() => (
     <footer
         className="bg-[#111] text-gray-400 pt-20 pb-8 text-sm font-inter relative"
         style={{ backgroundImage: `url(${BG_PATTERN_URL})`, backgroundRepeat: 'repeat', backgroundOpacity: 0.1 }}
@@ -128,6 +128,6 @@ const Footer = () => (
             </div>
         </div>
     </footer>
-);
+));
 
 export default Footer;

@@ -1,58 +1,50 @@
 
 import SectionTitle from './ui/SectionTitle';
+import { useFetchStaff } from '../hooks/useFetchStaff';
 
 const TeamSection = () => {
-    const teamMembers = [
-        {
-            id: 1,
-            name: "Michael Dean",
-            role: "Chef Master",
-            image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=400&auto=format&fit=crop"
-        },
-        {
-            id: 2,
-            name: "Arnold Taylor",
-            role: "Room Cleane",
-            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop"
-        },
-        {
-            id: 3,
-            name: "Michael Dean",
-            role: "Assistant Chef",
-            image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop"
-        },
-        {
-            id: 4,
-            name: "Michael Dean",
-            role: "Supervisor",
-            image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop"
-        }
-    ];
+    const { data: staff, loading, error } = useFetchStaff();
+    console.log(staff);
 
+    if (loading) {
+        return (
+            <section className="py-20 bg-[#fefefe]">
+                <div className="container mx-auto px-4 text-center">
+                    <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600"></div>
+                    <p className="mt-4 text-gray-600">Loading staff...</p>
+                </div>
+            </section>
+        );
+    }
+
+    if (error) {
+        return (
+            <section className="py-20 bg-[#fefefe]">
+                <div className="container mx-auto px-4 text-center">
+                    <p className="text-red-600">Error: {error}</p>
+                </div>
+            </section>
+        );
+    }
     return (
         <section className="py-20 bg-[#fefefe]">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
                 {/* Section Header */}
                 <div className="text-center mb-16">
-                    <p className="text-teal-600 font-medium tracking-wider text-sm uppercase mb-3">
-                        <SectionTitle tag="FIXYLAND STAFF" title="Expert Staff Persons" align="center" />
-                    </p>
-                    {/* <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-                        Expert Staff Persons
-                    </h2> */}
+                    <SectionTitle tag="FIXYLAND STAFF" title="Expert Staff Persons" align="center" />
                 </div>
 
                 {/* Team Grid */}
                 <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 xl:gap-8">
-                    {teamMembers.map((member) => (
+                    {staff.map((member) => (
                         <div
-                            key={member.id}
+                            key={member._id}
                             className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
                         >
                             {/* Image Container */}
                             <div className="relative h-80 overflow-hidden">
                                 <img
-                                    src={member.image}
+                                    src={member.photo}
                                     alt={member.name}
                                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
@@ -82,7 +74,7 @@ const TeamSection = () => {
                                 </h3>
                                 <div className="flex items-center">
                                     <div className="w-8 h-0.5 bg-teal-600 mr-3"></div>
-                                    <p className="text-gray-500 text-sm">{member.role}</p>
+                                    <p className="text-gray-500 text-sm">{member.title}</p>
                                 </div>
                             </div>
                         </div>

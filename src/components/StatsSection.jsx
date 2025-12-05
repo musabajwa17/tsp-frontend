@@ -1,5 +1,7 @@
+import React from 'react';
+
 const PRIMARY_GREEN = "bg-[#2da77a]";
-const StatsSection = () => (
+const StatsSection = React.memo(() => (
     <section className="bg-[#1f8f6a] py-15">
         <div className="container mx-auto px-5">
             <div className="flex flex-wrap justify-center items-center divide-x divide-white/30 text-center text-white">
@@ -30,6 +32,6 @@ const StatsSection = () => (
             </div>
         </div>
     </section>
-);
+));
 
 export default StatsSection; 

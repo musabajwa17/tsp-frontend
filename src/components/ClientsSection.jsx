@@ -1,10 +1,12 @@
-const ClientLogo = ({ children }) => (
+import React from 'react';
+
+const ClientLogo = React.memo(({ children }) => (
     <div className="opacity-60 hover:opacity-100 transition-opacity duration-300 cursor-pointer">
         {children}
     </div>
-);
+));
 
-const ClientsSection = () => (
+const ClientsSection = React.memo(() => (
     <section className="py-16 md:py-20 bg-[#e9f0ec]">
         <div className="container mx-auto px-4 text-center">
             <span className="bg-white text-[#2da77a] text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-sm mb-4 inline-block shadow-sm">
@@ -108,6 +110,6 @@ const ClientsSection = () => (
             </div>
         </div>
     </section>
-);
+));
 
 export default ClientsSection;
